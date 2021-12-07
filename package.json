@@ -1,0 +1,25 @@
+{
+  "name": "energy-usage-monitor-app",
+  "version": "1.0.0",
+  "description": "FullStack Energy Monitoring App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canberk-yilmaz/energy-usage-monitor-app.git"
+  },
+  "author": "Canberk Yilmaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/canberk-yilmaz/energy-usage-monitor-app/issues"
+  },
+  "homepage": "https://github.com/canberk-yilmaz/energy-usage-monitor-app#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "husky": "^7.0.4"
+  }
+}
