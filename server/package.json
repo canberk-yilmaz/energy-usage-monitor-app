@@ -4,12 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js --exec  \"npm run lint && node\"",
+    "lint": "./node_modules/.bin/eslint *.js",
+    "lint:fix": "./node_modules/.bin/eslint *.js  --fix"
   },
   "author": "Canberk Yilmaz",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.4.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
     "nodemon": "^2.0.15"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   }
 }
