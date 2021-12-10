@@ -7,16 +7,14 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-col cols='auto'>
+      <v-col cols="1">
         <v-select
-          v-model="select"
-          :items="languages"
+          v-model="selectedLang"
+          :items="langs"
           item-text="language"
-          item-value="language"
-          label="Select"
-          persistent-hint
+          item-value="abbr"
           return-object
-          single-line
+          @change="changeLang"
         ></v-select>
       </v-col>
     </v-app-bar>
@@ -25,17 +23,22 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data() {
     return {
-      select: { language: "Turkish", abbr: "TR" },
-      languages: [
-        { language: "Turkish", abbr: "TR" },
-        { language: "English", abbr: "EN" },
+      selectedLang: { language: 'English', abbr: 'en' },
+      langs: [
+        { language: '🇬🇧English', abbr: 'en' },
+        { language: '🇹🇷Turkish', abbr: 'tr' },
       ],
-    };
+    }
   },
-};
+  methods: {
+    changeLang(e) {
+      this.$root.$i18n.locale = e.abbr
+    },
+  },
+}
 </script>
 
 <style scoped></style>
