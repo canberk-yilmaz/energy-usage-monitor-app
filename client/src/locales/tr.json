@@ -1,3 +1,14 @@
 {
-    "message": "Mesaj !!"
-  }
+  "message": "Mesaj !!",
+  "table1": {
+    "title": "Fabrikalar",
+    "column1": "Fabrika İsmi",
+    "column2": "Üyelik Başlangıcı",
+    "column3": "Üyelik Bitişi",
+    "column4": "Çalışan Sayısı",
+    "column5": "Özel Üye"
+  },
+  "signIn": "GİRİŞ YAP",
+  "signUp": "ÜYE OL"
+
+}

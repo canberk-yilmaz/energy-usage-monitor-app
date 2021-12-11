@@ -1,3 +1,14 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "table1": {
+    "title": "Factories",
+    "column1": "Factory Name",
+    "column2": "Membership Start",
+    "column3": "Membership End",
+    "column4": "Employee Count",
+    "column5": "Special Member"
+  },
+  "signIn": "SIGN IN",
+  "signUp": "SIGN UP"
+
 }
