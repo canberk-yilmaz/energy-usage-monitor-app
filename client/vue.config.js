@@ -14,14 +14,11 @@ module.exports = {
     devServer: {
       proxy: {
         '/api/': {
-          target: 'http://localhost:3000/',
+          target: 'http://localhost:3000',
+          secure: false,
+          changeOrigin: true,
         },
       },
-      entry: [
-        'node_modules/regenerator-runtime/runtime.js',
-        './scripts/index.js',
-        './styles/main.scss',
-      ],
     },
   },
 }
