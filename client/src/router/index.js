@@ -16,19 +16,19 @@ const routes = [
       import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
   },
   {
-    path: '/signin',
+    path: '/user/signin',
     name: 'SignIn',
     component: () =>
       import(/* webpackChunkName: "signin" */ '../views/SignIn.vue'),
   },
   {
-    path: '/signup',
+    path: '/user/signup',
     name: 'SignUp',
     component: () =>
       import(/* webpackChunkName: "signup" */ '../views/SignUp.vue'),
   },
   {
-    path: '/settings',
+    path: '/user/settings',
     name: 'UserSettings',
     component: () =>
       import(/* webpackChunkName: "signup" */ '../views/UserSettings.vue'),

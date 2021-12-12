@@ -69,11 +69,15 @@ export default {
       sidebar: false,
       menuItems: [
         { title: 'Home', path: '/', icon: 'mdi-home' },
-        { title: 'Sign Up', path: '/signup', icon: 'mdi-face-man' },
-        { title: 'Sign In', path: '/signin', icon: 'mdi-lock-open-outline' },
+        { title: 'Sign Up', path: '/user/signup', icon: 'mdi-face-man' },
+        {
+          title: 'Sign In',
+          path: '/user/signin',
+          icon: 'mdi-lock-open-outline',
+        },
         {
           title: 'User Settings',
-          path: '/settings',
+          path: '/user/settings',
           icon: 'mdi-account-cog',
         },
       ],
