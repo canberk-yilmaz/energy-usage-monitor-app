@@ -17,8 +17,8 @@
             </blockquote>
           </v-flex>
           <v-flex xs12 sm6 offset-sm3 class="text-center" mt-5>
-            <v-btn color="primary" to="/signup">{{ $t('signUp') }}</v-btn>
-            <v-btn to="/signin">{{ $t('signIn') }}</v-btn>
+            <v-btn color="primary" to="/user/signup">{{ $t('signUp') }}</v-btn>
+            <v-btn to="/user/signin">{{ $t('signIn') }}</v-btn>
           </v-flex>
         </v-col>
       </v-row>
