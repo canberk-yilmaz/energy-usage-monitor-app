@@ -1,15 +1,15 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true
+  env: {
+    node: true,
+    commonjs: true,
+    es2021: true,
+  },
+  extends: ['prettier'],
+  parserOptions: {
+    ecmaVersion: 2020,
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
     },
-    "extends": [
-        "standard"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 8
-    },
-    "rules": {
-    }
-};
+  },
+  rules: {},
+}
