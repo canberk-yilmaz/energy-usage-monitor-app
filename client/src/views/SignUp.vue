@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid center>
     <v-layout row wrap>
       <v-flex xs12 class="text-center" mt-5>
         <h1>Sign Up</h1>
@@ -27,14 +27,18 @@
             </v-flex>
             <v-flex>
               <v-text-field
-                name="confirmPassword"
-                label="Confirm Password"
-                id="confirmPassword"
-                type="password"
+                name="username"
+                label="Username"
+                id="username"
                 required
               ></v-text-field>
             </v-flex>
-            <v-flex class="text-xs-center" mt-5>
+            <v-row align="center">
+              <v-col class="d-flex" cols="12">
+                <v-select :items="items" label="User Status"></v-select>
+              </v-col>
+            </v-row>
+            <v-flex class="text-center" mt-5>
               <v-btn color="primary" type="submit">Sign Up</v-btn>
             </v-flex>
           </v-layout>
@@ -45,5 +49,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    items: ['Admin', 'Editor', 'User'],
+  }),
+}
 </script>
