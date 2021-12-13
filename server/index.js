@@ -5,6 +5,7 @@ const user = require('./router/user')
 const log = require('./middleware/log')
 const logs = require('./router/logs')
 const bodyParser = require('body-parser')
+const db = require('./db/index.js')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -42,3 +43,5 @@ app.listen(process.env.PORT || 3000, (err) => {
 
 app.use('/api/user', log, user)
 app.use('/api/logs', logs)
+
+app.get('/api/factories', db.factories.getAll)
