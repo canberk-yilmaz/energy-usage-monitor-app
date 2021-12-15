@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "nodemon index.js --exec  \"npm run lint && node\"",
+    "start": "node index.js --exec  \"npm run lint && node\"",
+    "startdev": "nodemon index.js --exec  \"npm run lint && node\"",
     "lint": "./node_modules/.bin/eslint *.js",
     "lint:fix": "./node_modules/.bin/eslint *.js  --fix"
   },
