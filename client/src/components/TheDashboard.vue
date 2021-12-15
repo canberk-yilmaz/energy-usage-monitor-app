@@ -218,7 +218,7 @@ export default {
 
     async deleteItemConfirm() {
       try {
-        const res = await axios.delete('http://localhost:3000/api/factories', {
+        const res = await axios.delete('/api/factories', {
           data: { factoryname: this.editedItem.factoryname },
         })
         console.log(res)
@@ -250,7 +250,7 @@ export default {
     async save() {
       if (this.editedIndex > -1) {
         try {
-          await axios.patch('http://localhost:3000/api/factories', {
+          await axios.patch('/factories', {
             factoryname: this.editedItem.factoryname,
             membershipstart: this.editedItem.membershipstart,
             membershipend: this.editedItem.membershipend,
@@ -265,7 +265,7 @@ export default {
       } else {
         //add new row
         try {
-          await axios.post('http://localhost:3000/api/factories', {
+          await axios.post('/factories', {
             factoryname: this.editedItem.factoryname,
             membershipstart: this.editedItem.membershipstart,
             membershipend: this.editedItem.membershipend,
