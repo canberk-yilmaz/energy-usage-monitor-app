@@ -23,6 +23,7 @@
             :error-messages="passwordErrors"
             name="password"
             label="Password"
+            type="password"
             id="password"
             required
             @input="$v.password.$touch()"
@@ -101,10 +102,7 @@ export default {
   methods: {
     async userSignUp(data) {
       try {
-        const res = await axios.post(
-          'http://localhost:8080/api/user/signup',
-          data
-        )
+        const res = await axios.post('/user/signup', data)
         console.log(res)
       } catch (error) {
         console.log(error + 'Please control your credentials')
