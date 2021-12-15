@@ -45,7 +45,7 @@ export default new Vuex.Store({
   actions: {
     async getFactories({ commit }) {
       try {
-        const res = await axios.get('/api/factories')
+        const res = await axios.get('/factories')
         res.data.forEach((factory) => {
           factory.membershipstart = factory.membershipstart.slice(0, 10)
           factory.membershipend = factory.membershipend.slice(0, 10)

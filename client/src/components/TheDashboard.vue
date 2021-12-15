@@ -218,7 +218,7 @@ export default {
 
     async deleteItemConfirm() {
       try {
-        const res = await axios.delete('/api/factories', {
+        const res = await axios.delete('/factories', {
           data: { factoryname: this.editedItem.factoryname },
         })
         console.log(res)

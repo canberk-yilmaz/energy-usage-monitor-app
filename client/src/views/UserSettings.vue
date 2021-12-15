@@ -73,7 +73,7 @@ export default {
       this.dialog = true
     },
     async changeUsername() {
-      await axios.put('/api/user/settings/', {
+      await axios.put('/user/settings/', {
         email: this.email,
         username: this.newUsername,
       })

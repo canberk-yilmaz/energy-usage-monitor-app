@@ -182,7 +182,7 @@ export default {
     },
     async getAllFactoryDetails() {
       try {
-        const res = await axios.get('/api/factories/factoryusageall')
+        const res = await axios.get('/factories/factoryusageall')
         // res.data.forEach((factory) => {
         //   factory.daterange = factory.daterange.slice(1, -1)
         // })
@@ -193,7 +193,7 @@ export default {
     },
     async getFactoryUsage() {
       try {
-        const res = await axios.get('/api/factories/factoryusage', {
+        const res = await axios.get('/factories/factoryusage', {
           params: {
             factoryname: this.factoryname,
           },
@@ -221,7 +221,7 @@ export default {
 
     async deleteItemConfirm() {
       try {
-        await axios.delete('http://localhost:3000/api/factories', {
+        await axios.delete('/factories', {
           data: { factoryname: this.editedItem.factoryname },
         })
       } catch (err) {
@@ -251,17 +251,14 @@ export default {
     async save() {
       if (this.editedIndex > -1) {
         try {
-          await axios.patch(
-            'http://localhost:3000/api/factories/factoryusage',
-            {
-              factoryname: this.editedItem.factoryname,
-              department: this.editedItem.department,
-              daterange: this.editedItem.daterange,
-              electricalusage: this.editedItem.electricalusage,
-              usagefee: this.editedItem.usagefee,
-              discountedusagefee: this.editedItem.discountedusagefee,
-            }
-          )
+          await axios.patch('/factories/factoryusage', {
+            factoryname: this.editedItem.factoryname,
+            department: this.editedItem.department,
+            daterange: this.editedItem.daterange,
+            electricalusage: this.editedItem.electricalusage,
+            usagefee: this.editedItem.usagefee,
+            discountedusagefee: this.editedItem.discountedusagefee,
+          })
         } catch (err) {
           console.log(err)
         }
