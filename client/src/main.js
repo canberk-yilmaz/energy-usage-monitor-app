@@ -7,7 +7,7 @@ import i18n from './i18n'
 import Vuelidate from 'vuelidate'
 import axios from 'axios'
 
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = 'https://energy-usage-monitor-app.vercel.app/api'
 
 Vue.use(Vuelidate)
 
