@@ -2,22 +2,27 @@
   <v-container fluid center>
     <v-layout row wrap>
       <v-flex xs12 class="text-center" mt-5 mb-5>
-        <h1>User Settings</h1>
+        <h1>{{ $t('userSettings.userSettings') }}</h1>
       </v-flex>
     </v-layout>
     <v-flex xs12 class="text-center" mt-5>
       <v-col>
-        <div>
-          Username: {{ username }}
+        <h2>{{ $t('userSettings.username') }}</h2>
+        <div class="mt-4">
+          {{ username }}
           <v-icon @click="editUsernameDialog">mdi-account-edit-outline</v-icon>
         </div>
-        <p>E-mail: {{ email }}</p>
+        <h2 class="mt-4">{{ $t('userSettings.Email') }}</h2>
+        <div class="mt-4">{{ email }}</div>
       </v-col>
     </v-flex>
     <v-dialog v-model="dialog" max-width="600">
       <v-card>
         <v-card-title class="text-h5">
           Are you sure about changing your username?
+        </v-card-title>
+        <v-card-title class="text-h5 red">
+          You need to sign in again after changing username
         </v-card-title>
 
         <v-card-text> If you are you can continue below.</v-card-text>
@@ -64,27 +69,25 @@ export default {
     newUsername: null,
   }),
   methods: {
-    async getUserInfo() {
-      const res = await axios.post('/api/user/settings/', {
-        id: '61b5d5cd04ceb5cd348c6d9e',
-      })
-      this.username = res.data.user.username
-      this.email = res.data.user.email
-    },
     editUsernameDialog() {
       this.dialog = true
     },
     async changeUsername() {
       await axios.put('/api/user/settings/', {
-        id: '61b5d5cd04ceb5cd348c6d9e',
+        email: this.email,
         username: this.newUsername,
       })
       this.username = this.newUsername
       this.dialog = false
+      this.logout()
+    },
+    logout() {
+      this.$store.dispatch('logout')
     },
   },
   created() {
-    this.getUserInfo()
+    this.username = this.$store.state.user.username
+    this.email = this.$store.state.user.email
   },
 }
 </script>
