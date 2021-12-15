@@ -1,7 +1,7 @@
 {
   "message": "hello i18n !!",
-  "signIn": "SIGN IN",
-  "signUp": "SIGN UP",
+  "signIn": "GİRİŞ YAP",
+  "signUp": "ÜYE OL",
   "userSettings": {
     "userSettings": "Kullanıcı Ayarları",
     "username": "Kullanıcı Adı",
