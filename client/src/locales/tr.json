@@ -1,14 +1,43 @@
 {
-  "message": "Mesaj !!",
-  "table1": {
-    "title": "Fabrikalar",
-    "column1": "Fabrika İsmi",
-    "column2": "Üyelik Başlangıcı",
-    "column3": "Üyelik Bitişi",
-    "column4": "Çalışan Sayısı",
-    "column5": "Özel Üye"
+  "message": "hello i18n !!",
+  "signIn": "SIGN IN",
+  "signUp": "SIGN UP",
+  "userSettings": {
+    "userSettings": "Kullanıcı Ayarları",
+    "username": "Kullanıcı Adı",
+    "Email": "Eposta Adresi"
   },
-  "signIn": "GİRİŞ YAP",
-  "signUp": "ÜYE OL"
-
+  "dashboard": {
+    "factories": "Fabrikalar",
+    "membershipStart": "Üyelik Başlangıcı",
+    "membershipEnd": "Üyelik Bitişi",
+    "employeeCount": "Çalışan Sayısı",
+    "specialMember": "Özel Üye",
+    "actions": "Aksiyonlar",
+    "newItemUp": "YENİ KAYIT",
+    "newItemLower": "Yeni Kayıt",
+    "rowsPerPage": "Sayfa başı satır:",
+    "dialogDelete": {
+      "title": "Bu kaydı silmek istediğinize emin misiniz?",
+      "ok": "Tamam",
+      "cancel": "Vazgeç",
+      "save": "Kaydet"
+    }
+  },
+  "navbar": {
+    "dashboard": "GÖSTERGE PANELİ",
+    "dashboardLow": "Gösterge Paneli",
+    "appTitleL": "Enerji Kullanımı İzleme Uygulaması",
+    "home": "Anasayfa",
+    "signUp": "Kayıt Ol",
+    "signIn": "Giriş Yap",
+    "signOut": "ÇIKIŞ YAP",
+    "signOutL": "Çıkış Yap",
+    "userSettings": "KULLANICI AYARLARI",
+    "userSettingsL": "Kullanıcı Ayarları"
+  },
+  "homepage": {
+    "bl1": "Enerji Kullanımı İzleme Uygulaması",
+    "bl2": "Aşağıdaki teknolojilerle hazırlanmıştır."
+  }
 }

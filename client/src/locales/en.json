@@ -1,14 +1,43 @@
 {
   "message": "hello i18n !!",
-  "table1": {
-    "title": "Factories",
-    "column1": "Factory Name",
-    "column2": "Membership Start",
-    "column3": "Membership End",
-    "column4": "Employee Count",
-    "column5": "Special Member"
-  },
   "signIn": "SIGN IN",
-  "signUp": "SIGN UP"
-
+  "signUp": "SIGN UP",
+  "userSettings": {
+    "userSettings": "User Settings",
+    "username": "Username",
+    "Email": "Email"
+  },
+  "dashboard": {
+    "factories": "Factories",
+    "membershipStart": "Membership Start",
+    "membershipEnd": "Membership End",
+    "employeeCount": "Employee Count",
+    "specialMember": "Special Member",
+    "actions": "Actions",
+    "newItemUp": "NEW ITEM",
+    "newItemLower": "New Item",
+    "rowsPerPage": "Rows per page:",
+    "dialogDelete": {
+      "title": "Are you sure you want to delete this item?",
+      "ok": "OK",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
+  },
+  "navbar": {
+    "dashboard": "DASHBOARD",
+    "dashboardLow": "Dashboard",
+    "appTitleL": "Energy Usage Monitor App",
+    "home": "Home",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "signOut": "SIGN OUT",
+    "signOutL": "Sign Out",
+    "userSettings": "USER SETTINGS",
+    "userSettingsL": "User Settings"
+  },
+  "homepage": {
+    "bl1": "It's a Energy Monitoring application",
+    "bl2": "Build With"
+  }
 }
