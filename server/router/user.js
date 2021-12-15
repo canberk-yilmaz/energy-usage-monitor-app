@@ -108,7 +108,9 @@ router.post(
         { expiresIn: 10000 },
         (err, token) => {
           if (err) throw err
-          res.status(200).json({ token })
+          res
+            .status(200)
+            .json({ token: token, email: user.email, username: user.username })
         }
       )
     } catch (e) {
@@ -120,15 +122,15 @@ router.post(
   }
 )
 
-router.post('/settings/', async (req, res) => {
-  console.log(req.body)
-  try {
-    const user = await User.findById(req.body.id)
-    res.status(201).json({ user })
-  } catch (e) {
-    res.send('User Settings Error')
-  }
-})
+// router.post('/settings/', async (req, res) => {
+//   const { email } = req.body
+//   try {
+//     const user = await User.findBy({ email })
+//     res.status(201).json({ user })
+//   } catch (e) {
+//     res.send('User Settings Error')
+//   }
+// })
 
 router.put(
   '/settings/',
@@ -151,7 +153,7 @@ router.put(
     console.log(req.body)
     try {
       const doc = await User.findOneAndUpdate(
-        { id: req.body.id },
+        { email: req.body.email },
         { username: req.body.username }
       )
       res.status(201).json({ doc })
