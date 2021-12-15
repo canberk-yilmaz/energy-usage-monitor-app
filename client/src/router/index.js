@@ -82,7 +82,7 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page.
     if (!store.state.user) {
       next({
-        path: '/signin',
+        path: '/user/signin',
         query: { redirect: to.fullPath },
       })
     } else {
