@@ -73,10 +73,7 @@ export default {
     },
     async userSignIn(data) {
       try {
-        const res = await axios.post(
-          'http://localhost:3000/api/user/signin',
-          data
-        )
+        const res = await axios.post('/user/signin', data)
         const token = res.data.token
         if (jwt.verify(token, process.env.VUE_APP_SECRET_KEY)) {
           res.data.remember = this.rememberme
