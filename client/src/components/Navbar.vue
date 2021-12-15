@@ -88,9 +88,9 @@
         </v-btn>
       </v-toolbar-title>
 
-      <v-toolbar-title v-if="this.$store.state.user">
+      <v-btn disabled v-if="this.$store.state.user">
         {{ this.$store.state.user.username }}
-      </v-toolbar-title>
+      </v-btn>
       <v-toolbar-items>
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
