@@ -1,7 +1,7 @@
 const factories = require('./models/factories/index')
-//const factorydetails = require('./factorydetails')
+const factorydetails = require('./models/factorydetails/index')
 
 module.exports = {
   factories,
-//  factorydetails,
+  factorydetails,
 }

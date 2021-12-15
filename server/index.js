@@ -45,3 +45,10 @@ app.use('/api/user', log, user)
 app.use('/api/logs', logs)
 
 app.get('/api/factories', db.factories.getAll)
+app.delete('/api/factories', db.factories.delByName)
+app.patch('/api/factories', db.factories.updateOne)
+app.post('/api/factories', db.factories.newFactory)
+
+app.get('/api/factories/factoryusage', db.factorydetails.getByName)
+app.get('/api/factories/factoryusageall', db.factorydetails.getAll)
+app.patch('/api/factories/factoryusage', db.factorydetails.update)
