@@ -4,19 +4,26 @@
       <v-row class="main-row" align="center" justify="center">
         <v-col>
           <v-flex xs12 class="text-center" mt-5>
-            <h1>Energy Usage Monitor App</h1>
+            <h1>{{ $t('navbar.appTitleL') }}</h1>
           </v-flex>
           <v-flex xs12 sm6 offset-sm3 mt-3>
             <blockquote class="blockquote text-center">
-              It's a Energy Monitoring application <br />
-              Build With: <br />
+              {{ $t('homepage.bl1') }} <br />
+              {{ $t('homepage.bl2') }} <br />
               -PosgreSQL <br />
               -MongoDB <br />
               -Node.js <br />
               -Vue.js
             </blockquote>
           </v-flex>
-          <v-flex xs12 sm6 offset-sm3 class="text-center" mt-5>
+          <v-flex
+            v-if="!this.$store.state.user"
+            xs12
+            sm6
+            offset-sm3
+            class="text-center"
+            mt-5
+          >
             <v-btn color="primary" to="/user/signup">{{ $t('signUp') }}</v-btn>
             <v-btn to="/user/signin">{{ $t('signIn') }}</v-btn>
           </v-flex>

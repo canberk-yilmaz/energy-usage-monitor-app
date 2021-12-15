@@ -9,7 +9,7 @@
       >
         <template v-slot:top>
           <v-toolbar flat>
-            <v-toolbar-title>Factories</v-toolbar-title>
+            <v-toolbar-title>{{ $t('dashboard.factories') }}</v-toolbar-title>
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
             <v-dialog v-model="dialog" max-width="500px">
@@ -21,7 +21,7 @@
                   v-bind="attrs"
                   v-on="on"
                 >
-                  New Item
+                  {{ $t('dashboard.newItemLower') }}
                 </v-btn>
               </template>
               <v-card>
@@ -34,36 +34,36 @@
                     <v-row>
                       <v-col cols="12">
                         <v-text-field
-                          v-model="editedItem.factoryName"
+                          v-model="editedItem.factoryname"
                           label="Factory Name"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          v-model="editedItem.membershipStart"
+                          v-model="editedItem.membershipstart"
                           label="Membership Start"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          v-model="editedItem.membershipEnd"
-                          label="Membership Start"
+                          v-model="editedItem.membershipend"
+                          label="Membership End"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          v-model="editedItem.employeeCount"
+                          v-model="editedItem.employeecount"
                           label="Employee Count"
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-select
                           :items="[false, true]"
-                          v-model="editedItem.specialMember"
+                          v-model="editedItem.specialmember"
                           label="Special Member"
                         ></v-select>
                         <!-- <v-text-field
-                          v-model="editedItem.specialMember"
+                          v-model="editedItem.specialmember"
                           label="Special Member"
                         ></v-text-field> -->
                       </v-col>
@@ -74,24 +74,29 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="blue darken-1" text @click="close">
-                    Cancel
+                    {{ $t('dashboard.dialogDelete.cancel') }}
                   </v-btn>
-                  <v-btn color="blue darken-1" text @click="save"> Save </v-btn>
+                  <v-btn color="blue darken-1" text @click="save">
+                    {{ $t('dashboard.dialogDelete.save') }}
+                  </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
             <v-dialog v-model="dialogDelete" max-width="500px">
               <v-card>
                 <v-card-title class="text-h5"
-                  >Are you sure you want to delete this item?</v-card-title
-                >
+                  >{{ $t('dashboard.dialogDelete.title') }}
+                </v-card-title>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="closeDelete"
-                    >Cancel</v-btn
-                  >
-                  <v-btn color="blue darken-1" text @click="deleteItemConfirm"
-                    >OK</v-btn
+                  <v-btn color="blue darken-1" text @click="closeDelete">{{
+                    $t('dashboard.dialogDelete.cancel')
+                  }}</v-btn>
+                  <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="deleteItemConfirm"
+                    >{{ $t('dashboard.dialogDelete.ok') }}</v-btn
                   >
                   <v-spacer></v-spacer>
                 </v-card-actions>
@@ -100,6 +105,9 @@
           </v-toolbar>
         </template>
         <template v-slot:[`item.actions`]="{ item }">
+          <v-icon small class="mr-2" @click="getFactoryUsage(item)">
+            mdi-view-dashboard
+          </v-icon>
           <v-icon small class="mr-2" @click="editItem(item)">
             mdi-pencil
           </v-icon>
@@ -107,51 +115,67 @@
         </template>
       </v-data-table>
     </v-card>
+    <!-- <v-card>
+      <router-link
+        :to="{ name: 'factory', query: { factory: this.selectedFactory } }"
+        >Hello1</router-link
+      ></v-card
+    > -->
+    <router-view :key="$route.path"></router-view>
   </v-container>
 </template>
 
 <script>
 import axios from 'axios'
+import i18n from '@/i18n'
+
 export default {
   name: 'TheDashboard',
 
   data: () => ({
     dialog: false,
     dialogDelete: false,
+    selectedFactory: '',
     headers: [
       {
-        text: 'Factories',
+        text: i18n.t('dashboard.factories'),
         align: 'start',
         sortable: false,
-        value: 'factoryName',
+        value: 'factoryname',
       },
-      { text: 'Membership Start', value: 'membershipStart' },
-      { text: 'Membership End', value: 'membershipEnd' },
-      { text: 'Employee Count', value: 'employeeCount' },
-      { text: 'Special Member', value: 'specialMember' },
-      { text: 'Actions', value: 'actions', sortable: false },
+      {
+        text: i18n.t('dashboard.membershipStart'),
+        value: 'membershipstart',
+      },
+      { text: i18n.t('dashboard.membershipEnd'), value: 'membershipend' },
+      { text: i18n.t('dashboard.employeeCount'), value: 'employeecount' },
+      { text: i18n.t('dashboard.specialMember'), value: 'specialmember' },
+      { text: i18n.t('dashboard.actions'), value: 'actions', sortable: false },
     ],
-    factoryData: [],
+    //factoryData: [],
     editedIndex: -1,
     editedItem: {
-      factoryName: '',
-      membershipStart: '',
-      membershipEnd: '',
-      employeeCount: 0,
-      specialMember: false,
+      factoryname: '',
+      membershipstart: '',
+      membershipend: '',
+      employeecount: 0,
+      specialmember: false,
     },
     defaultItem: {
-      factoryName: '',
-      membershipStart: '',
-      membershipEnd: '',
-      employeeCount: 0,
-      specialMember: false,
+      factoryname: '',
+      membershipstart: '',
+      membershipend: '',
+      employeecount: 0,
+      specialmember: false,
     },
   }),
 
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+    },
+    factoryData() {
+      return this.$store.state.factoryData
     },
   },
 
@@ -165,19 +189,19 @@ export default {
   },
 
   created() {
-    this.getFactories()
+    this.getAllFactories()
   },
 
   methods: {
-    async getFactories() {
-      const res = await axios.get('/api/factories')
-      res.data.forEach((factory) => {
-        factory.membershipStart = factory.membershipStart.slice(0, 10)
-        factory.membershipEnd = factory.membershipEnd.slice(0, 10)
+    getFactoryUsage(value) {
+      console.log(value.factoryname)
+      this.$router.push({
+        name: 'factory',
+        params: { factoryname: value.factoryname },
       })
-
-      this.factoryData = res.data
-      console.log(res)
+    },
+    getAllFactories() {
+      this.$store.dispatch('getFactories')
     },
 
     editItem(item) {
@@ -192,8 +216,17 @@ export default {
       this.dialogDelete = true
     },
 
-    deleteItemConfirm() {
-      console.log(this.editedItem.factoryName) // FACTORY NAME WILL BE USE TO DELETE REQUEST
+    async deleteItemConfirm() {
+      try {
+        const res = await axios.delete('http://localhost:3000/api/factories', {
+          data: { factoryname: this.editedItem.factoryname },
+        })
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
+
+      console.log(this.editedItem.factoryname)
       this.factoryData.splice(this.editedIndex, 1)
       this.closeDelete()
     },
@@ -214,12 +247,35 @@ export default {
       })
     },
 
-    save() {
+    async save() {
       if (this.editedIndex > -1) {
+        try {
+          await axios.patch('http://localhost:3000/api/factories', {
+            factoryname: this.editedItem.factoryname,
+            membershipstart: this.editedItem.membershipstart,
+            membershipend: this.editedItem.membershipend,
+            employeecount: this.editedItem.employeecount,
+            specialmember: this.editedItem.specialmember,
+          })
+        } catch (err) {
+          console.log(err)
+        }
         Object.assign(this.factoryData[this.editedIndex], this.editedItem)
+        //edit
       } else {
+        //add new row
+        try {
+          await axios.post('http://localhost:3000/api/factories', {
+            factoryname: this.editedItem.factoryname,
+            membershipstart: this.editedItem.membershipstart,
+            membershipend: this.editedItem.membershipend,
+            employeecount: this.editedItem.employeecount,
+            specialmember: this.editedItem.specialmember,
+          })
+        } catch (err) {
+          console.log(err)
+        }
         this.factoryData.push(this.editedItem)
-        console.log(this.editedItem)
       }
       this.close()
     },

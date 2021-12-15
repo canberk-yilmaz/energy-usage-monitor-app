@@ -8,33 +8,89 @@
     >
       <v-list>
         <v-list-item class="h2 font-weight-medium">
-          {{ appTitle }}
+          {{ $t('navbar.appTitleL') }}
         </v-list-item>
-        <v-list-item
-          v-for="item in menuItems"
-          :key="item.title"
-          :to="item.path"
-        >
-          <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>{{ item.title }}</v-list-item-content>
-        </v-list-item>
+        <div v-if="!this.$store.state.user">
+          <v-list-item
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.path"
+          >
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>{{ item.title }}</v-list-item-content>
+          </v-list-item>
+        </div>
+        <div v-if="this.$store.state.user">
+          <v-list-item to="/">
+            {{ $t('navbar.home') }}
+          </v-list-item>
+          <v-list-item to="/dashboard">
+            {{ $t('navbar.dashboardLow') }}
+          </v-list-item>
+          <v-list-item to="/user/settings">
+            {{ $t('navbar.userSettingsL') }}
+          </v-list-item>
+          <v-list-item @click="logout">
+            {{ $t('navbar.signOutL') }}
+          </v-list-item>
+        </div>
       </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app>
       <v-app-bar-nav-icon @click="sidebar = !sidebar"> </v-app-bar-nav-icon>
       <v-toolbar-title class="h2 font-weight-medium hidden-sm-and-down">
-        {{ appTitle }}
+        {{ $t('navbar.appTitleL') }}
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-and-down" v-show="!sidebar">
+      <v-toolbar-items
+        v-if="!this.$store.state.user"
+        class="hidden-xs-and-down"
+        v-show="!sidebar"
+      >
         <v-btn text v-for="item in menuItems" :key="item.title" :to="item.path">
           <v-icon left dark>{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
       </v-toolbar-items>
+
+      <v-toolbar-title
+        v-if="this.$store.state.user"
+        class="hidden-sm-and-down"
+        v-show="!sidebar"
+      >
+        <v-btn text :to="'/dashboard'">
+          <v-icon left dark>mdi-view-dashboard</v-icon>
+          {{ $t('navbar.dashboard') }}
+        </v-btn>
+      </v-toolbar-title>
+
+      <v-toolbar-title
+        v-if="this.$store.state.user"
+        class="hidden-sm-and-down"
+        v-show="!sidebar"
+      >
+        <v-btn text :to="'/user/settings'">
+          <v-icon left dark>mdi-account-cog</v-icon>
+          {{ $t('navbar.userSettings') }}
+        </v-btn>
+      </v-toolbar-title>
+      <v-toolbar-title
+        v-if="this.$store.state.user"
+        class="hidden-sm-and-down"
+        v-show="!sidebar"
+      >
+        <v-btn text @click="logout">
+          <v-icon left dark>mdi-logout</v-icon>
+          {{ $t('navbar.signOut') }}
+        </v-btn>
+      </v-toolbar-title>
+
+      <v-toolbar-title v-if="this.$store.state.user">
+        {{ this.$store.state.user.username }}
+      </v-toolbar-title>
       <v-toolbar-items>
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
@@ -61,24 +117,25 @@
 </template>
 
 <script>
+import i18n from '@/i18n'
+
 export default {
   name: 'Navbar',
   data() {
     return {
-      appTitle: 'Energy Usage Monitor App',
+      appTitle: i18n.t('navbar.appTitleL'),
       sidebar: false,
       menuItems: [
-        { title: 'Home', path: '/', icon: 'mdi-home' },
-        { title: 'Sign Up', path: '/user/signup', icon: 'mdi-face-man' },
+        { title: i18n.t('navbar.home'), path: '/', icon: 'mdi-home' },
         {
-          title: 'Sign In',
-          path: '/user/signin',
-          icon: 'mdi-lock-open-outline',
+          title: i18n.t('navbar.signUp'),
+          path: '/user/signup',
+          icon: 'mdi-face-man',
         },
         {
-          title: 'User Settings',
-          path: '/user/settings',
-          icon: 'mdi-account-cog',
+          title: i18n.t('navbar.signIn'),
+          path: '/user/signin',
+          icon: 'mdi-lock-open-outline',
         },
       ],
       selectedLang: localStorage.getItem('lang') || 'en',
@@ -93,6 +150,10 @@ export default {
       localStorage.setItem('lang', lang.abbr)
       this.$root.$i18n.locale = lang.abbr
       console.log(lang)
+    },
+    logout() {
+      this.$store.dispatch('logout')
+      //this.$route.push('/signin')
     },
   },
 }
