@@ -1,5 +1,7 @@
 # Energy Usage Monitoring App
 
+# Patika Reengen Full Stack Bootcamp Final Project
+
 Full Stack Project
 
 - Backend: Node.js
