@@ -149,8 +149,6 @@ router.put(
         errors: errors.array(),
       })
     }
-
-    console.log(req.body)
     try {
       const doc = await User.findOneAndUpdate(
         { email: req.body.email },

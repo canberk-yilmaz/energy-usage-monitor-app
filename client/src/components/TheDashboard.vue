@@ -194,7 +194,6 @@ export default {
 
   methods: {
     getFactoryUsage(value) {
-      console.log(value.factoryname)
       this.$router.push({
         name: 'factory',
         params: { factoryname: value.factoryname },
@@ -226,7 +225,6 @@ export default {
         console.log(err)
       }
 
-      console.log(this.editedItem.factoryname)
       this.factoryData.splice(this.editedIndex, 1)
       this.closeDelete()
     },

@@ -279,7 +279,6 @@ export default {
         //   console.log(err)
         // }
         this.factoryUsage.push(this.editedItem)
-        console.log(this.editedItem)
       }
       this.close()
     },

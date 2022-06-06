@@ -41,7 +41,7 @@ app.listen(process.env.PORT || 3000, (err) => {
   }
 })
 
-app.use('/api/user', log, user)
+app.use('/api/user', logs, user)
 app.use('/api/logs', logs)
 
 app.get('/api/factories', db.factories.getAll)
