@@ -10,36 +10,55 @@
             v-model="email"
             :error-messages="emailErrors"
             name="email"
-            label="Email"
+            :label="$t('email')"
             id="email"
             type="email"
             required
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()"
+            autocomplete="email"
           ></v-text-field>
 
           <v-text-field
             v-model="password"
             :error-messages="passwordErrors"
             name="password"
-            label="Password"
+            :label="$t('password')"
             id="password"
             type="password"
             required
             @input="$v.password.$touch()"
             @blur="$v.password.$touch()"
+            autocomplete="current-password"
           ></v-text-field>
-          <v-checkbox v-model="rememberme" :label="'Remember Me'"></v-checkbox>
+          <v-checkbox
+            v-model="rememberme"
+            :label="$t('rememberMe')"
+          ></v-checkbox>
 
           <v-flex class="text-center" mt-5>
-            <v-btn color="primary" @click="getFormValues">Sign In</v-btn>
+            <v-btn color="primary" @click="getFormValues">{{
+              $t('signIn')
+            }}</v-btn>
           </v-flex>
           <v-flex v-if="error" class="text-center" mt-5>
-            <p class="red--text">Please check your email and password</p>
+            <p class="red--text">{{ $t('PleaseCheckYourEmailAndPassword') }}</p>
           </v-flex>
         </form>
       </v-flex>
     </v-layout>
+    <v-container class="text-center mt-12">
+      <v-divider class="mb-12"></v-divider>
+
+      <v-btn color="secondary" @click="autofillSampleUser">{{
+        $t('addSampleData')
+      }}</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn color="secondary mt-4" @click="clearForm">{{
+        $t('clearForm')
+      }}</v-btn>
+      <v-divider class="mt-12"></v-divider>
+    </v-container>
   </v-container>
 </template>
 
@@ -67,6 +86,16 @@ export default {
     }
   },
   methods: {
+    autofillSampleUser() {
+      this.email = 'energyusageapp@gmail.com'
+      this.password = 'EnergyUsageApp1'
+      this.rememberme = true
+    },
+    clearForm() {
+      this.email = ''
+      this.password = ''
+      this.rememberme = false
+    },
     setUserData() {
       this.email = localStorage.getItem('userEmail') || ''
       this.password = localStorage.getItem('userPassword') || ''
