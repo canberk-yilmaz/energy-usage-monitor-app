@@ -10,35 +10,38 @@
             v-model="email"
             :error-messages="emailErrors"
             name="email"
-            label="Email"
+            :label="$t('email')"
             id="email"
             type="email"
             required
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()"
+            autocomplete="email"
           ></v-text-field>
 
           <v-text-field
             v-model="password"
             :error-messages="passwordErrors"
             name="password"
-            label="Password"
+            :label="$t('password')"
             type="password"
             id="password"
             required
             @input="$v.password.$touch()"
             @blur="$v.password.$touch()"
+            autocomplete="current-password"
           ></v-text-field>
 
           <v-text-field
             v-model="username"
             :error-messages="usernameErrors"
             name="username"
-            label="Username"
+            :label="$t('username')"
             id="username"
             required
             @input="$v.username.$touch()"
             @blur="$v.username.$touch()"
+            autocomplete="username"
           ></v-text-field>
 
           <v-row align="center">
@@ -47,14 +50,17 @@
                 v-model="userStatus"
                 :error-messages="userStatusErrors"
                 :items="items"
-                label="User Status"
+                :label="$t('userStatus')"
                 @change="$v.userStatus.$touch()"
                 @blur="$v.userStatus.$touch()"
+                autocomplete="off"
               ></v-select>
             </v-col>
           </v-row>
           <v-flex class="text-center" mt-5>
-            <v-btn color="primary" @click="getFormValues">Sign Up</v-btn>
+            <v-btn color="primary" @click="getFormValues">{{
+              $t('signUp')
+            }}</v-btn>
           </v-flex>
         </form>
       </v-flex>
@@ -64,6 +70,7 @@
 
 <script>
 import axios from 'axios'
+import i18n from '@/i18n'
 import {
   required,
   minLength,
@@ -92,7 +99,7 @@ export default {
     userStatus: { required },
   },
   data: () => ({
-    items: ['admin', 'editor', 'user'],
+    items: [i18n.t('admin'), i18n.t('editor'), i18n.t('user')],
     email: '',
     password: '',
     username: '',
@@ -130,13 +137,13 @@ export default {
       const errors = []
       if (!this.$v.email.$dirty) return errors
       !this.$v.email.email && errors.push('Must be valid e-mail')
-      !this.$v.email.required && errors.push('E-mail is required')
+      !this.$v.email.required && errors.push(i18n.t('emailRequired'))
       return errors
     },
     passwordErrors() {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Password is required')
+      !this.$v.password.required && errors.push(i18n.t('passwordRequired'))
       !this.$v.password.hasLowerCase &&
         errors.push('Password must contain lowercase letter.')
       !this.$v.password.hasUpperCase &&
@@ -149,7 +156,7 @@ export default {
     usernameErrors() {
       const errors = []
       if (!this.$v.username.$dirty) return errors
-      !this.$v.username.required && errors.push('Username is required')
+      !this.$v.username.required && errors.push(i18n.t('usernameRequired'))
       !this.$v.username.alpha &&
         errors.push('Username should not contain numbers.')
       !this.$v.username.minLength &&
@@ -159,7 +166,7 @@ export default {
     userStatusErrors() {
       const errors = []
       if (!this.$v.userStatus.$dirty) return errors
-      !this.$v.userStatus.required && errors.push('User Status is required')
+      !this.$v.userStatus.required && errors.push(i18n.t('userStatusRequired'))
       return errors
     },
   },
