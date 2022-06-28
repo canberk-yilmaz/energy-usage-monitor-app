@@ -1,7 +1,7 @@
 {
   "message": "hello i18n !!",
   "signIn": "GİRİŞ YAP",
-  "signUp": "ÜYE OL",
+  "signUp": "KAYIT OL",
   "userSettings": {
     "userSettings": "Kullanıcı Ayarları",
     "username": "Kullanıcı Adı",
@@ -39,5 +39,19 @@
   "homepage": {
     "bl1": "Enerji Kullanımı İzleme Uygulaması",
     "bl2": "Aşağıdaki teknolojilerle hazırlanmıştır."
-  }
+  },
+  "addSampleData": "Veri Ekle",
+  "clearForm": "Formu Temizle",
+  "rememberMe": "Beni Hatırla",
+  "email": "Eposta",
+  "password": "Şifre",
+  "username": "Kullanıcı Adı",
+  "userStatus": "Kullanıcı Durumu",
+  "admin": "Yönetici",
+  "editor": "Editör",
+  "user": "Kullanıcı",
+  "emailRequired": "E-posta gerekli",
+  "passwordRequired": "Şifre gerekli",
+  "usernameRequired": "Kullanıcı adı gerekli",
+  "userStatusRequired": "Kullanıcı durumu gerekli"
 }

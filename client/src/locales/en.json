@@ -39,5 +39,19 @@
   "homepage": {
     "bl1": "It's a Energy Monitoring application",
     "bl2": "Build With"
-  }
+  },
+  "addSampleData": "Add Sample Data",
+  "clearForm": "Clear Form",
+  "rememberMe": "Remember Me",
+  "email": "Email",
+  "password": "Password",
+  "username": "Username",
+  "userStatus": "User Status",
+  "admin": "Admin",
+  "editor": "Editor",
+  "user": "User",
+  "emailRequired": "Email Required",
+  "passwordRequired": "Password Required",
+  "usernameRequired": "Username Required",
+  "userStatusRequired": "User Status Required"
 }
