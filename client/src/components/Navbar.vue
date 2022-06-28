@@ -149,7 +149,7 @@ export default {
     changeLang(lang) {
       localStorage.setItem('lang', lang.abbr)
       this.$root.$i18n.locale = lang.abbr
-      console.log(lang)
+      location.reload()
     },
     logout() {
       this.$store.dispatch('logout')
