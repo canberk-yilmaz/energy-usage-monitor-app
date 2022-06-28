@@ -24,7 +24,7 @@
             class="text-center"
             mt-5
           >
-            <v-btn color="primary" to="/user/signup">{{ $t('signUp') }}</v-btn>
+            <v-btn class="mr-8" color="primary" to="/user/signup">{{ $t('signUp') }}</v-btn>
             <v-btn to="/user/signin">{{ $t('signIn') }}</v-btn>
           </v-flex>
         </v-col>
